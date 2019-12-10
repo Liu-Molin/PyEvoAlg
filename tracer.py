@@ -9,6 +9,7 @@
 # Copyright  © Rockface 2019 - 2020
 # --------------------------------------------------------------
 from individual import Individual
+from GA_support import dominate
 
 
 class Tracer:
@@ -24,5 +25,10 @@ class Tracer:
         self.best_param = None
         self.objective_fn = objective
 
-    def track(self, individual):
-        return None
+    def track(self, individual: Individual):
+
+        if dominate(individual.ov, self.best_ov):
+            self.best_ov = individual.ov
+            self.best_param = individual.param
+            return True
+        return False
