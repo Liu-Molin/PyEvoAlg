@@ -19,6 +19,13 @@ class Type(Enum):
     MAX = 1
 
 
+class GA:
+
+    def __init__(self, N, G):
+        self.N = N
+        self.G = G
+
+
 def dominate(x: Individual, y: Individual, type='min'):
     '''
     Determine if x dominates y.
